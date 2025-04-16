@@ -83,7 +83,7 @@ This project is deployed using **Vercel**, which hosts the app with fast and rel
 ### Installation
 Clone the repository:
 ```bash
-git clone https://github.com/your-username/ai-pdf-image-chatbot.git
+git clone https://github.com/Shikha-9125/ChatDoc-AI.git
 cd ai-pdf-image-chatbot
 ```
 Install dependencies:
@@ -101,7 +101,7 @@ NEXT_PUBLIC_PINECONE_API_KEY=your-pinecone-api-key
 ```
 Run the app locally:
 ```bash
-npm run dev
+pnpm dev
 ```
 The app will be running at `http://localhost:3000`.
 
