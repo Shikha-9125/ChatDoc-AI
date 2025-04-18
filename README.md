@@ -1,22 +1,21 @@
 # AI-Powered PDF & Image Chatbot
 
-## Overview
-This is a full-stack web application where users can upload PDFs or images and interact with them through intelligent chat powered by OpenAI's GPT and Google's Gemini models. The AI understands the uploaded content and provides human-like responses to user queries.
+# ChatPDF is a full-stack AI-powered web app that allows users to upload PDF, DOC, or image files and interact with them using a chatbot interface. It uses OpenAI’s API to answer questions based on the uploaded content, with features like real-time collaboration, file management, and theme switching.
 
-**For example:**
+---
 
-- Upload a textbook PDF and ask: “What is circular composition?”
-- Upload a resume and ask: “What are the candidate’s key skills?”
+## 🚀 Features
 
-The AI interprets the file and responds instantly with accurate, human-like answers.
+- 🔐 User Authentication (Google, GitHub, Email)
+- 📤 Upload PDF/DOC/Image files
+- 💬 Chat with your document (powered by OpenAI)
+- 🔄 Real-time collaboration
+- 📁 Rename/Delete files
+- 📦 Chat Export (Download, Copy)
+- 🔁 Reset chat
+- 🔊 Text-to-Audio conversion
+- 🌙 Light/Dark theme toggle
 
-## Features
-- **PDF & Image Upload:** Upload your documents (PDFs or images) directly to the app.
-- **AI Chat:** Interact with the content of your uploaded files through an intuitive chat interface.
-- **Resume Chat:** Upload resumes and ask personalized questions like, “What are the candidate’s strengths?”
-- **Real-time Interactions:** Receive responses from AI models GPT-4 or Gemini in real time.
-- **Semantic Search:** Fast, efficient, and scalable search of large documents using Pinecone (vector database).
-- **Optimized Performance:** Utilizes LangChain to optimize AI queries and reduce API costs.
 
 ## Tech Stack
 | Layer            | Technology                           | What it does                                           |
@@ -57,20 +56,6 @@ The AI interprets the file and responds instantly with accurate, human-like answ
 ### 5. Real-time Chat Interface
 - The AI-generated response is displayed in a chat interface.
 
-## Features in Detail
-
-### PDF & Image Upload
-Upload a wide variety of file types (PDF, JPEG, PNG). The app supports various formats and handles complex documents, including multi-column PDFs and scanned images.
-
-### AI-Powered Chat
-Ask questions directly related to the content of the uploaded file, and the AI will respond with detailed, accurate information.
-
-### Pinecone Vector Database
-Pinecone enables the app to quickly search and retrieve relevant content from large documents by comparing the query's embedding with stored document embeddings. This allows for fast, scalable retrieval of information, even with large files.
-
-### Resume Chat
-Specifically designed for resumes, this feature allows users to upload resumes and ask questions like, “What are the candidate’s strengths?” or “What skills are mentioned?”
-
 ## Deployment
 This project is deployed using **Vercel**, which hosts the app with fast and reliable performance. Vercel makes it easy to deploy and scale serverless applications.
 
@@ -92,16 +77,15 @@ npm install
 ```
 Set up environment variables:
 - Create a `.env.local` file at the root of the project.
-- Add your Firebase and OpenAI API keys as well as Pinecone credentials:
+- Add your Firebase and OpenAI API keys:
 
 ```env
 NEXT_PUBLIC_FIREBASE_API_KEY=your-firebase-api-key
 NEXT_PUBLIC_OPENAI_API_KEY=your-openai-api-key
-NEXT_PUBLIC_PINECONE_API_KEY=your-pinecone-api-key
 ```
 Run the app locally:
 ```bash
-pnpm dev
+yarn run dev
 ```
 The app will be running at `http://localhost:3000`.
 
