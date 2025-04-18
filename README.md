@@ -1,6 +1,6 @@
 # AI-Powered PDF & Image Chatbot
 
-# ChatPDF is a full-stack AI-powered web app that allows users to upload PDF, DOC, or image files and interact with them using a chatbot interface. It uses OpenAI’s API to answer questions based on the uploaded content, with features like real-time collaboration, file management, and theme switching.
+##ChatPDF is a full-stack AI-powered web app that allows users to upload PDF, DOC, or image files and interact with them using a chatbot interface. It uses OpenAI’s API to answer questions based on the uploaded content, with features like real-time collaboration, file management, and theme switching.
 
 ---
 
