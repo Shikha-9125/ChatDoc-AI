@@ -1,95 +1,415 @@
-# AI-Powered PDF & Image Chatbot
+# 🤖 ChatDoc AI
 
-##ChatPDF is a full-stack AI-powered web app that allows users to upload PDF, DOC, or image files and interact with them using a chatbot interface. It uses OpenAI’s API to answer questions based on the uploaded content, with features like real-time collaboration, file management, and theme switching.
+An AI-powered document assistant that enables users to upload PDFs, DOC files, and images and interact with them through a conversational chatbot. The application leverages Retrieval-Augmented Generation (RAG), OpenAI, Gemini, and Pinecone to provide accurate, context-aware responses grounded in uploaded documents.
 
 ---
 
 ## 🚀 Features
 
 - 🔐 User Authentication (Google, GitHub, Email)
-- 📤 Upload PDF/DOC/Image files
-- 💬 Chat with your document (powered by OpenAI)
-- 🔄 Real-time collaboration
-- 📁 Rename/Delete files
-- 📦 Chat Export (Download, Copy)
-- 🔁 Reset chat
-- 🔊 Text-to-Audio conversion
-- 🌙 Light/Dark theme toggle
+- 📤 Upload PDF, DOC, and Image Files
+- 💬 Chat with Documents using AI
+- 🧠 Retrieval-Augmented Generation (RAG)
+- 🔎 Semantic Search with Vector Embeddings
+- 📁 Rename/Delete Files
+- 📦 Export Chats
+- 🔁 Reset Conversation
+- 🔊 Text-to-Speech Support
+- 🌙 Light/Dark Theme Toggle
+- 🤝 Real-Time Collaboration
+- 📱 Fully Responsive Design
 
+---
 
-## Tech Stack
-| Layer            | Technology                           | What it does                                           |
-|------------------|---------------------------------------|--------------------------------------------------------|
-| Frontend         | Next.js, React                        | Build the UI and structure of the website              |
-| Styling          | Tailwind CSS, NextUI, Shadcn UI       | Creates a modern, responsive design and UI components  |
-| Icons/UI         | Lucide Icons, Radix UI                | Add beautiful, customizable icons and UI elements      |
-| File Upload      | Edgestore                             | Handles uploading and storing PDF/image files          |
-| PDF Handling     | pdf-parse, react-pdf                  | Extracts text from PDFs                                |
-| Image Parsing    | Gemini Vision API                     | Understands content from images                        |
-| LLMs             | OpenAI (GPT-4), Gemini                | Understands file content and generates smart answers   |
-| Vector DB        | Pinecone                              | Stores and retrieves semantic vector data efficiently  |
-| Embeddings       | OpenAI Embedding Models               | Converts text into vector format for semantic search   |
-| State Management | Zustand, useState                     | Manages UI states like uploaded file, chat flow        |
-| Authentication   | Firebase Auth                         | Allows user login/logout securely                      |
-| Backend          | Next.js API Routes, Langchain         | Handles AI integration and server logic                |
-| Deployment       | Vercel                                | Hosts the full app live and fast                       |
+## 🏗️ RAG Pipeline Architecture
 
-## How It Works
+<p align="center">
+  <img src="./public/RAG_Pipeline architectural diagram.png" alt="RAG Pipeline Architecture" width="1000"/>
+</p>
 
-### 1. User Uploads a File
-- Upload a PDF or image (such as a resume or document) to the platform.
+### Workflow Overview
 
-### 2. File Processing
-- The file is stored in Edgestore.
-- Text is extracted from PDFs using `pdf-parse` or `react-pdf`.
-- Content from images (e.g., scanned documents) is parsed using Gemini Vision API (OCR).
+#### Document Processing
 
-### 3. Embedding and Semantic Search
-- The extracted content is converted into embeddings using OpenAI’s embedding models.
-- These embeddings are stored in Pinecone for fast, efficient semantic search.
+1. User uploads PDF, DOC, or Image files.
+2. Text is extracted from PDFs using parsing libraries.
+3. Images and scanned documents are processed using Gemini Vision OCR.
+4. Content is split into smaller chunks.
+5. OpenAI Embedding Models generate vector embeddings.
+6. Embeddings are stored in Pinecone along with metadata.
 
-### 4. User Queries
-- When the user asks a question, the query is converted into an embedding.
-- The app performs a semantic search through Pinecone to retrieve the most relevant content from the document.
-- The relevant text chunks are passed to ChatGPT or Gemini to generate a response.
+#### Query Processing
 
-### 5. Real-time Chat Interface
-- The AI-generated response is displayed in a chat interface.
+1. User submits a question.
+2. The query is converted into an embedding.
+3. Pinecone performs similarity search.
+4. Relevant chunks are retrieved.
+5. Retrieved context is combined with the user's question.
+6. GPT-4 or Gemini generates a grounded response.
+7. The final answer is displayed in the chat interface.
 
-## Deployment
-This project is deployed using **Vercel**, which hosts the app with fast and reliable performance. Vercel makes it easy to deploy and scale serverless applications.
+### Benefits
 
-## Getting Started
+- ✅ Context-aware responses
+- ✅ Reduced hallucinations
+- ✅ Fast semantic search
+- ✅ Multi-document support
+- ✅ Accurate information retrieval
+- ✅ Scalable architecture
 
-### Prerequisites
-- Node.js (LTS version)
-- npm or yarn
+---
 
-### Installation
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|---------|------------|
+| Frontend | Next.js, React |
+| Styling | Tailwind CSS, NextUI, Shadcn UI |
+| Icons/UI | Lucide Icons, Radix UI |
+| File Upload | Edgestore |
+| PDF Processing | pdf-parse, react-pdf |
+| OCR | Gemini Vision API |
+| Embeddings | OpenAI Embeddings |
+| Vector Database | Pinecone |
+| LLM | GPT-4, Gemini |
+| Authentication | Firebase Auth |
+| State Management | Zustand |
+| Backend | Next.js API Routes |
+| AI Framework | LangChain |
+| Deployment | Vercel |
+
+---
+
+## ⚙️ System Design
+
+```text
+User
+ │
+ ▼
+Upload Document
+ │
+ ▼
+Text Extraction
+(PDF Parse / OCR)
+ │
+ ▼
+Chunking
+ │
+ ▼
+Embedding Generation
+ │
+ ▼
+Pinecone Vector Database
+ │
+ ▼
+User Question
+ │
+ ▼
+Query Embedding
+ │
+ ▼
+Similarity Search
+ │
+ ▼
+Relevant Chunks
+ │
+ ▼
+GPT-4 / Gemini
+ │
+ ▼
+Response
+```
+
+---
+
+## 🔍 How It Works
+
+### 1. Upload Files
+
+Users can upload:
+
+- PDF Documents
+- DOC Files
+- Images
+- Scanned Documents
+
+---
+
+### 2. Content Extraction
+
+#### PDFs
+
+- pdf-parse
+- react-pdf
+
+#### Images
+
+- Gemini Vision API
+- OCR Processing
+
+---
+
+### 3. Chunking
+
+Large documents are split into smaller chunks.
+
+Example:
+
+```text
+Document
+  ↓
+Chunk 1
+Chunk 2
+Chunk 3
+Chunk 4
+```
+
+This helps improve retrieval accuracy.
+
+---
+
+### 4. Embedding Generation
+
+OpenAI Embedding Models convert each chunk into vector representations.
+
+Example:
+
+```text
+"This candidate knows React"
+
+↓
+
+[0.23, 0.81, 0.54, ...]
+```
+
+Embeddings capture semantic meaning rather than exact keywords.
+
+---
+
+### 5. Vector Storage
+
+Embeddings are stored in Pinecone with metadata.
+
+Example:
+
+```json
+{
+  "fileName": "resume.pdf",
+  "page": 4,
+  "chunkId": 10
+}
+```
+
+---
+
+### 6. Semantic Retrieval
+
+When a question is asked:
+
+```text
+What technologies are mentioned?
+```
+
+The query is embedded and Pinecone retrieves the most relevant chunks.
+
+---
+
+### 7. Response Generation
+
+Retrieved context is combined with:
+
+- User Query
+- System Prompt
+
+and sent to GPT-4 or Gemini for answer generation.
+
+---
+
+### 8. Final Response
+
+Example:
+
+```text
+User:
+What technologies are used?
+
+AI:
+The document mentions React, Next.js, Tailwind CSS,
+Firebase, Pinecone, LangChain, and OpenAI.
+```
+
+---
+
+## 📂 Project Structure
+
+```bash
+ChatDoc-AI
+│
+├── app/
+├── components/
+├── lib/
+├── hooks/
+├── public/
+│   ├── image.webp
+│   ├── pdf.webp
+│   └── RAG_Pipeline architectural diagram.png
+│
+├── styles/
+├── utils/
+├── package.json
+├── next.config.js
+└── README.md
+```
+
+---
+
+## 🔧 Installation
+
 Clone the repository:
+
 ```bash
 git clone https://github.com/Shikha-9125/ChatDoc-AI.git
-cd ai-pdf-image-chatbot
 ```
+
+Move into the project directory:
+
+```bash
+cd ChatDoc-AI
+```
+
 Install dependencies:
+
 ```bash
 npm install
 ```
-Set up environment variables:
-- Create a `.env.local` file at the root of the project.
-- Add your Firebase and OpenAI API keys:
+
+or
+
+```bash
+yarn install
+```
+
+---
+
+## 🔐 Environment Variables
+
+Create a `.env.local` file.
 
 ```env
-NEXT_PUBLIC_FIREBASE_API_KEY=your-firebase-api-key
-NEXT_PUBLIC_OPENAI_API_KEY=your-openai-api-key
+# Firebase
+NEXT_PUBLIC_FIREBASE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
+
+# OpenAI
+OPENAI_API_KEY=
+
+# Gemini
+GEMINI_API_KEY=
+
+# Pinecone
+PINECONE_API_KEY=
+PINECONE_INDEX_NAME=
+
+# EdgeStore
+EDGE_STORE_ACCESS_KEY=
+EDGE_STORE_SECRET_KEY=
 ```
-Run the app locally:
+
+---
+
+## ▶️ Running Locally
+
 ```bash
-yarn run dev
+npm run dev
 ```
-The app will be running at `http://localhost:3000`.
 
-## Contributing
-Feel free to fork this repository, submit issues, or create pull requests. Contributions are always welcome!
+or
 
+```bash
+yarn dev
+```
 
+Open:
+
+```text
+http://localhost:3000
+```
+
+---
+
+## 🚀 Deployment
+
+This project is deployed using Vercel.
+
+```bash
+vercel
+```
+
+### Deployment Benefits
+
+- Global CDN
+- Automatic GitHub Deployments
+- Fast Serverless Functions
+- Easy Scaling
+
+---
+
+## 🎯 Future Enhancements
+
+- Multi-file Chat
+- Chat History Search
+- Citation-Based Answers
+- Voice Conversations
+- Team Workspaces
+- Advanced OCR Support
+- Document Summarization
+
+---
+
+## 👩‍💻 Author
+
+### Shikha Gupta
+
+Final Year Electrical Engineering Student  
+Dr. B.R. Ambedkar National Institute of Technology
+
+### Skills
+
+- Data Structures & Algorithms
+- Competitive Programming
+- Full Stack Development
+- Generative AI
+- RAG Systems
+- LangChain
+- Pinecone
+- OpenAI APIs
+
+### Connect With Me
+
+GitHub:
+https://github.com/Shikha-9125
+
+LinkedIn:
+https://linkedin.com/in/shikha-gupta
+
+---
+
+## ⭐ Support
+
+If you found this project useful:
+
+⭐ Star the repository
+
+🍴 Fork the repository
+
+📝 Contribute and open issues
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
